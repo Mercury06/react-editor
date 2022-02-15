@@ -12,31 +12,24 @@ const ListTable = ({ todos }) => {
           <ReactBootstrap.Table striped bordered hover>
                 <thead>
                     <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
+                        <th>#</th>
+                        <th>Task</th>
+                        <th>Status</th>
+                        <th>Edit panel</th>
                     </tr>
-                </thead>
+                </thead>                
                 <tbody>
-                    <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                { todos.tasks && todos.tasks.map((item) => (
+                    <tr key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.title}</td>
+                        <td>{item.completed ? "completed" : null}</td>
+                        <td></td>
                     </tr>
-                    <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <td>3</td>
-                    <td colSpan={2}>Larry the Bird</td>
-                    <td>@twitter</td>
-                    </tr>
-                </tbody>
+                    ))
+                }   
+                </tbody>)
+                
             </ReactBootstrap.Table>
         </div>  )}
 

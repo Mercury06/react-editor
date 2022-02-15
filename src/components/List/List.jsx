@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const List = () => {
 
-    const [todos, setTodos] = useState ([]);   
+    const [todos, setTodos] = useState ({ tasks: [] });   
   
     
     useEffect (() => {        
@@ -19,13 +19,13 @@ const List = () => {
         //   }  else {
         //     return null}
           
-            setTodos(todos);
+            setTodos({ tasks: todos });
             console.log(todos)
         })
     },[]);
 
     return (
-        <div>
+        <div className="table">
          
             {/* <ListTable setItem={setItem} addNewItem={addNewItem} items={items} 
                             removeItem={removeItem} item={item} 
