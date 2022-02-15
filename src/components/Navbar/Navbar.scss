@@ -1,0 +1,31 @@
+    .navbar_container {
+        height: 70px;
+        width: 100%;
+        background-color: #f8f9fa;
+        opacity: 1;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-right: 0.75rem;
+        padding-left: 0.75rem;
+
+        .navbar_item a {
+            font-family: system-ui,-apple-system,"Segoe UI", "Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            opacity: 0.7;
+        }
+                
+        .navbar_item .active {
+            font-size: 1.3rem;
+            color: #0a0101;
+            opacity: 1;
+        }
+    }
