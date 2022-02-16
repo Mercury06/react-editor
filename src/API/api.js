@@ -4,7 +4,7 @@ const baseURL = 'https://jsonplaceholder.typicode.com/todos';
 
 export const todosAPI = {
     
-    getAllItems () {
+    getTodos () {
         
         return axios.get ( baseURL)
         .then(response => {
@@ -12,29 +12,29 @@ export const todosAPI = {
         });
     },
 
-    getGender (gender) {
+    // getGender (gender) {
        
-        return axios.get ( baseURL+`character?gender=${gender}`)
-        .then(response => {
-            return response
-        });
-    },
+    //     return axios.get ( baseURL+`character?gender=${gender}`)
+    //     .then(response => {
+    //         return response
+    //     });
+    // },
 
-    getSpecies (species) {
+    // getSpecies (species) {
        
-        return axios.get ( baseURL+`character?species=${species}`)
-        .then(response => {
-            return response
-        });
-    },
+    //     return axios.get ( baseURL+`character?species=${species}`)
+    //     .then(response => {
+    //         return response
+    //     });
+    // },
 
-    getStatus (status) {
+    // getStatus (status) {
         
-        return axios.get ( baseURL+`character?status=${status}`)
-        .then(response => {
-            return response
-        });
-    },
+    //     return axios.get ( baseURL+`character?status=${status}`)
+    //     .then(response => {
+    //         return response
+    //     });
+    // },
 
 
 }

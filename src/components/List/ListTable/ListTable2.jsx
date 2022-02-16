@@ -6,7 +6,7 @@ import "./ListTable.scss";
 
 
 const ListTable2 = ({todos, removeItem}) => {
- 
+    debugger
     return (
         <div> 
             <section className="vh-100" >          
