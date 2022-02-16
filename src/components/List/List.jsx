@@ -3,15 +3,14 @@ import { useDispatch, useSelector, useStore } from 'react-redux';
 //import ListTable from './ListTable/ListTable';
 //import axios from 'axios';
 import { todosAPI } from '../../API/api';
-import { deleteTodo, getTodosThunkCreator, setTodos } from '../../reducers/todosReducer';
+import { addNewTodo, deleteTodo, getTodosThunkCreator } from '../../reducers/todosReducer';
 import ListTable2 from './ListTable/ListTable2';
-//import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 const List = () => {
 
     const [inputValue, setInputValue] = useState ('');  
-    console.log(inputValue)
-  
+     
     const todos = useSelector( state => state.todos.todos )
 
     const store = useStore()
@@ -38,23 +37,24 @@ const List = () => {
     
 
     const removeItem = (id) => {       
-        
         dispatch(deleteTodo(id));
     }
 
-    // const addNewItem = () => {
-    //     if (item.trim() !== '') {
-    //         const newItem = {
-    //             id: uuidv4(),
-    //             item: item,
-    //             complete: false
-    //         }
-    //         setItems ((items) => [ ...items, newItem])
-    //         setItem ('');
-    //     } else {
-    //         setItem ('');
-    //     }            
-    // }
+    const addNewItem = () => {
+        debugger
+        if (inputValue.trim() !== '') {
+            const newTodo = {
+                userId: 11,
+                id: uuidv4(),
+                title: inputValue,
+                completed: false
+            }
+            dispatch(addNewTodo (newTodo))
+            setInputValue ('');
+        } else {
+            setInputValue ('');
+        }            
+    }
 
     return (
         <div className="table">
@@ -66,7 +66,7 @@ const List = () => {
                  {/* <ListTable todos={todos} /> */}
                  <ListTable2 todos={todos} 
                              removeItem={removeItem} 
-                            //  addNewItem={addNewItem} 
+                             addNewItem={addNewItem} 
                              inputValue={inputValue}
                              setInputValue={setInputValue} />
                  
