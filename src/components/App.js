@@ -1,5 +1,5 @@
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.scss';
 import List from './List/List';
 import MainPage from './MainPage/MainPage';
@@ -15,7 +15,9 @@ function App() {
           <Routes>
             <Route path="/main" element={<MainPage />} />
             <Route path="/" element={<MainPage />} />
-            <Route path="/list" element={<List />} />           
+            <Route path="/list" element={<List />} replace />
+            <Route path="main/list" element={<Navigate to="/list" replace />} />      
+
           </Routes> 
               
           </div>

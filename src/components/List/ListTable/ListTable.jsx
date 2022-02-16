@@ -19,7 +19,7 @@ const ListTable = ({ todos }) => {
                     </tr>
                 </thead>                
                 <tbody>
-                { todos.tasks && todos.tasks.map((item) => (
+                { todos && todos.map((item) => (
                     <tr key={item.id}>
                         <td>{item.id}</td>
                         <td>{item.title}</td>

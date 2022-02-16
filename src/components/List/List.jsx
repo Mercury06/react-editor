@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ListTable from './ListTable/ListTable';
 import axios from 'axios';
+import ListTable2 from './ListTable/ListTable2';
 //import { v4 as uuidv4 } from 'uuid';
 
 const List = () => {
 
-    const [todos, setTodos] = useState ({ tasks: [] });   
+    // const [todos, setTodos] = useState ({ tasks: [] }); 
+    const [todos, setTodos] = useState ([]);    
   
     
     useEffect (() => {        
@@ -19,10 +21,14 @@ const List = () => {
         //   }  else {
         //     return null}
           
-            setTodos({ tasks: todos });
+            setTodos(todos);
             console.log(todos)
         })
     },[]);
+
+    const removeItem = (id) => {           
+        setTodos(todos.filter((item) => item.id !== id));
+    }
 
     return (
         <div className="table">
@@ -31,7 +37,8 @@ const List = () => {
                             removeItem={removeItem} item={item} 
                             onComplete={onComplete} /> */}               
                 <div>List</div>
-                 <ListTable todos={todos} />
+                 {/* <ListTable todos={todos} /> */}
+                 <ListTable2 todos={todos} removeItem={removeItem} />
         </div>
     )
 }
