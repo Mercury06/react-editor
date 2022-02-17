@@ -5,16 +5,17 @@ const HIDE_MODAL = 'HIDE_MODAL'
 
 const defaultState = {
     loader: false,
-    visible: false
+    visibleModal: false
 }
 
 export default function appReducer(state = defaultState, action) {
     
     switch (action.type) {
+
         case SHOW_LOADER: return {...state, loader: true}
         case HIDE_LOADER: return {...state, loader: false}
-        case SET_MODAL: return {...state, visible: true}
-        case HIDE_MODAL: return {...state, visible: false}
+        case SET_MODAL: return {...state, visibleModal: true}
+        case HIDE_MODAL: return {...state, visibleModal: false}
 
         default:
             return state

@@ -1,4 +1,4 @@
-.modal {
+.active_modal {
     position: fixed;
     // top: 36%;
     // left: 36%;
@@ -6,8 +6,11 @@
     left: 0;
     right: 0;
     bottom: 0;
-    display: none;
-    background-color: rgba(0, 0, 0, 0.5);    
+    background-color: rgba(0, 0, 0, 0.5);  
+    display: flex;
+    justify-content: center;
+    align-items: center;      
+    z-index: 1
 }
 
 .modalContent {
@@ -34,8 +37,8 @@
    
 }
 
-.modal.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-}
+// .modal.active {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;    
+// }

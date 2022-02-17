@@ -1,9 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { setModal } from '../../../reducers/appReducer';
 import { setSelectedItem } from '../../../reducers/todosReducer';
-import { EditItem, RemoveIcon } from '../../UI/Icons/Boxicons';
 import ListItems from './ListItems/ListItems';
-//import { RemoveIcon } from '../../Icons/Boxicons';
 import "./ListTable.scss";
 
 
@@ -12,9 +11,9 @@ const ListTable2 = ({todos, removeItem, addNewItem, inputValue, setInputValue}) 
 
     const dispatch = useDispatch();
 
-    const onAddToModal = (obj) => {
-       
+    const onAddToModal = (obj) => {         
         dispatch(setSelectedItem (obj))
+        dispatch(setModal(true))
     }
     //debugger
     return (
@@ -44,13 +43,15 @@ const ListTable2 = ({todos, removeItem, addNewItem, inputValue, setInputValue}) 
             { todos && todos.length !== 0 
                 ? todos.map((item) => {
                     return (
-                <ListItems key = {item.id+item.userId}
-                           id={item.id}
-                           userId={item.userId}
-                           title={item.title}
-                           completed={item.completed}
-                           removeItem={removeItem} 
-                           onItem={(obj) => onAddToModal (obj)} />
+                        <ListItems key = {item.id+item.userId}
+                                   id={item.id}
+                                   userId={item.userId}
+                                   title={item.title}
+                                   completed={item.completed}
+                                   removeItem={removeItem}
+                                   setModal={setModal}
+                                   setItem={setSelectedItem} 
+                                   onItem={(obj) => onAddToModal (obj)} />
                     )
                 })
                 : <div className="loader"> <h3>list is empty</h3></div>

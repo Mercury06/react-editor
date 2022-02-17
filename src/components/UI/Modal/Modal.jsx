@@ -1,30 +1,30 @@
 import React from 'react';
-import s from './Modal.scss';
+import './Modal.scss';
 
-const Modal = ({ visible, setModal, hideModal, selectedId }) => {
+const Modal = ({ hideModal, item }) => {
 
-    const rootClasses = [s.modal]
+    // const rootClasses = [s.modal]
    
-    if (visible) {
-        rootClasses.push(s.active);
-    }
+    // if (visibleModal) {
+    //     rootClasses.push(s.active);
+    // }
 
     return (
-        <div className={rootClasses.join(' ')} onClick={()=>hideModal()}>
-            <div className={s.modalContent} onClick={(e)=>e.stopPropagation()}>    
-            <div className={s.infoBlock}>
-                <div className={s.avaBlock}>    
-                    {/* <div><img src={} style={{ width: '180px', height: '180px' }}/></div> */}
-                </div>
-                <div className={s.descriptionBlock}>                      
-                <p><b>Id: </b></p>
-                <p><b>Name: </b></p>
-                <p><b>gender: </b></p>
-                
-                <button className={s.button} onClick={()=>hideModal()} > Back to list</button>
-                </div> 
-                
-            </div>     
+        // <div className={rootClasses.join(' ')} onClick={()=>hideModal()}>
+            <div className="active_modal">
+                <div className="modalContent" onClick={(e)=>e.stopPropagation()}>    
+                    <div className="infoBlock">
+                        
+                        <div className="descriptionBlock">                      
+                            <p><b>Id: </b></p>
+                            <p><b>Name: </b></p>
+                            <p><b>gender: </b></p>
+                        
+                            <button className="button" onClick={hideModal} > Cancel </button>&nbsp;
+                            <button className="button" onClick={hideModal} > Apply </button>
+                        </div> 
+                        
+                    </div>     
             </div>
         </div>
     )

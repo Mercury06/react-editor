@@ -7,8 +7,8 @@ import { addNewTodo, deleteTodo, getTodosThunkCreator } from '../../reducers/tod
 import ListTable2 from './ListTable/ListTable2';
 import { v4 as uuidv4 } from 'uuid';
 import Loader from '../UI/Loader/Loader';
-//import Modal from '../UI/Modal/Modal';
-import { hideModal, setModal } from '../../reducers/appReducer';
+import Modal from '../UI/Modal/Modal';
+import { hideLoader, hideModal, setModal } from '../../reducers/appReducer';
 
 const List = () => {
 
@@ -16,7 +16,7 @@ const List = () => {
      
     const todos = useSelector( state => state.todos.todos )
     const loader = useSelector( state => state.app.loader )
-    const visible = useSelector( state => state.app.visible )
+    const visibleModal = useSelector( state => state.app.visibleModal )
     const selectedItem = useSelector ( state => state.todos.selectedItem )
 
     const store = useStore()
@@ -31,6 +31,10 @@ const List = () => {
 
     const removeItem = (id) => {       
         dispatch(deleteTodo(id));
+    }
+
+    const hideModalOnClick = () => {
+        dispatch(hideModal());
     }
 
     const addNewItem = () => {
@@ -57,15 +61,14 @@ const List = () => {
                             onComplete={onComplete} /> */}               
                 <div>List</div>
                  {/* <ListTable todos={todos} /> */}
-                 {/* <Modal visible={visible} setModal={setModal} hideModal={hideModal} selectedItem={selectedItem} >
+                 { visibleModal && <Modal hideModal={hideModalOnClick} item={selectedItem} >
                     text
-                </Modal> */}
-                { loader ? <Loader /> :           
-                 <ListTable2 todos={todos} 
-                             removeItem={removeItem} 
-                             addNewItem={addNewItem} 
-                             inputValue={inputValue}
-                             setInputValue={setInputValue} />
+                </Modal>}
+                { loader ? <Loader /> :  <ListTable2 todos={todos} 
+                                                     removeItem={removeItem} 
+                                                     addNewItem={addNewItem} 
+                                                     inputValue={inputValue}
+                                                     setInputValue={setInputValue} /> 
                 }
         </div>
     )
