@@ -1,0 +1,41 @@
+.modal {
+    position: fixed;
+    // top: 36%;
+    // left: 36%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);    
+}
+
+.modalContent {
+    margin-top: 4%;
+    margin-left: 4%;
+    padding: 25px;
+    background: cornsilk;
+    border-radius: 16px;
+    min-width: 350px;
+    min-height: 300px;  
+
+    .infoBlock {
+        display: flex;
+        flex-direction: row;
+        .avaBlock {
+            justify-content: space-between;
+            margin-top: 86px;
+        }
+        .descriptionBlock {
+            justify-content: space-between;
+            margin-left: 16px;
+        }
+    }
+   
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}

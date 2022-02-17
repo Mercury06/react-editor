@@ -7,6 +7,8 @@ import { addNewTodo, deleteTodo, getTodosThunkCreator } from '../../reducers/tod
 import ListTable2 from './ListTable/ListTable2';
 import { v4 as uuidv4 } from 'uuid';
 import Loader from '../UI/Loader/Loader';
+//import Modal from '../UI/Modal/Modal';
+import { hideModal, setModal } from '../../reducers/appReducer';
 
 const List = () => {
 
@@ -14,29 +16,17 @@ const List = () => {
      
     const todos = useSelector( state => state.todos.todos )
     const loader = useSelector( state => state.app.loader )
+    const visible = useSelector( state => state.app.visible )
+    const selectedItem = useSelector ( state => state.todos.selectedItem )
 
     const store = useStore()
     console.log("from store:", store.getState())
     const dispatch = useDispatch();
   
 
-    useEffect (() => {        
-    //   axios.get('https://jsonplaceholder.typicode.com/todos').then((res)=>{
-        // todosAPI.getTodos().then((res)=>{
-          
-        //   let todos = res.data;
-          //let pagesCount = res.data.info.pages;
-  
-        //   if (todos.length > 0) {
-        //     setIsLoading(false)
-        //   }  else {
-        //     return null}
-     
-        dispatch(getTodosThunkCreator());
-        
-    },[]);
-    
-
+    useEffect (() => {    
+        dispatch(getTodosThunkCreator());        
+    }, []);
     
 
     const removeItem = (id) => {       
@@ -67,6 +57,9 @@ const List = () => {
                             onComplete={onComplete} /> */}               
                 <div>List</div>
                  {/* <ListTable todos={todos} /> */}
+                 {/* <Modal visible={visible} setModal={setModal} hideModal={hideModal} selectedItem={selectedItem} >
+                    text
+                </Modal> */}
                 { loader ? <Loader /> :           
                  <ListTable2 todos={todos} 
                              removeItem={removeItem} 
