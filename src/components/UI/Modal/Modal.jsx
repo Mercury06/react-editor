@@ -1,27 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Modal.scss';
 
-const Modal = ({ hideModal, item }) => {
+const Modal = ({ hideModal, editTodo, item }) => {
 
-    // const rootClasses = [s.modal]
-   
-    // if (visibleModal) {
-    //     rootClasses.push(s.active);
-    // }
+    const[form, setForm] = useState({ 
+        userId: item.userId, 
+        id: item.id, 
+        title: "",
+        completed: "" 
+    })
+
+    const changeHandler = event => {
+        setForm({ ...form, [event.target.name]: event.target.value })
+    }
 
     return (
-        // <div className={rootClasses.join(' ')} onClick={()=>hideModal()}>
-            <div className="active_modal">
+
+            <div className="active_modal" onClick={hideModal} >
                 <div className="modalContent" onClick={(e)=>e.stopPropagation()}>    
                     <div className="infoBlock">
                         
-                        <div className="descriptionBlock">                      
-                            <p><b>Id: </b></p>
-                            <p><b>Name: </b></p>
-                            <p><b>gender: </b></p>
-                        
-                            <button className="button" onClick={hideModal} > Cancel </button>&nbsp;
-                            <button className="button" onClick={hideModal} > Apply </button>
+                        <div className="descriptionBlock">      
+                            <form>             
+                                <p><b>Task: </b>&nbsp;<input onChange={changeHandler} type="text" name="title" placeholder={item.title} /></p>
+                                <p><b>Completed </b><input onChange={changeHandler} type="radio" name="completed" value="true" /></p>
+                                <p><b>Uncompleted </b><input onChange={changeHandler} type="radio" name="completed" value="false" /></p>
+                            </form>   
+                            <div className="button_block">
+                                <button className="button" onClick={hideModal} > Cancel </button>
+                                <button className="button" onClick={() => editTodo({...form})} > Apply </button>
+                            </div>
                         </div> 
                         
                     </div>     

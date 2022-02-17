@@ -5,6 +5,7 @@ const SET_TODOS = "SET_TODOS"
 const ADD_TODO = "ADD_TODO"
 const DELETE_TODO = 'DELETE_TODO'
 const SET_SELECTED_ITEM = "SET_SELECTED_ITEM"
+const EDIT_TODO = "EDIT_TODO"
 
 
 const defaultState = {
@@ -14,14 +15,22 @@ const defaultState = {
 }
 
 export default function todosReducer(state = defaultState, action) {
-    //debugger
+    debugger
     switch (action.type) {
         case SET_TODOS: return {...state, todos: action.payload}
         case DELETE_TODO: return {...state, todos: [...state.todos.filter(todo => todo.id !== action.payload)]}
         case SET_SELECTED_ITEM: return {...state, selectedItem: action.payload}
         case ADD_TODO: return {...state, todos: [action.payload, ...state.todos ]}
-           
-        
+        case EDIT_TODO: return {...state, todos: [...state.todos.map(todo => todo.id === action.payload.id  
+                                                                    ? { ...todo, 
+                                                                        title: action.payload.title
+                                                                             }
+                                                                    : todo
+                                                                    )
+                                                            ]}
+                                                       
+                                                    
+
         default:
             return state
     }
@@ -31,6 +40,8 @@ export const setTodos = (todos) => ({type: SET_TODOS, payload: todos})
 export const addNewTodo = (newTodo) => ({type: ADD_TODO, payload: newTodo})
 export const deleteTodo = (id) => ({type: DELETE_TODO, payload: id})
 export const setSelectedItem = (obj) => ({type: SET_SELECTED_ITEM, payload: obj})
+export const editTodo = (obj) => ({type: EDIT_TODO, payload: obj})
+
 
 
 export const getTodosThunkCreator = () => {

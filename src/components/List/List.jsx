@@ -3,7 +3,7 @@ import { useDispatch, useSelector, useStore } from 'react-redux';
 //import ListTable from './ListTable/ListTable';
 //import axios from 'axios';
 //import { todosAPI } from '../../API/api';
-import { addNewTodo, deleteTodo, getTodosThunkCreator } from '../../reducers/todosReducer';
+import { addNewTodo, deleteTodo, editTodo, getTodosThunkCreator } from '../../reducers/todosReducer';
 import ListTable2 from './ListTable/ListTable2';
 import { v4 as uuidv4 } from 'uuid';
 import Loader from '../UI/Loader/Loader';
@@ -37,6 +37,12 @@ const List = () => {
         dispatch(hideModal());
     }
 
+    const editTodoOnClick = (obj) => {
+        debugger
+        dispatch(editTodo(obj))
+        dispatch(hideModal());
+    }
+
     const addNewItem = () => {
     
         if (inputValue.trim() !== '') {
@@ -61,9 +67,7 @@ const List = () => {
                             onComplete={onComplete} /> */}               
                 <div>List</div>
                  {/* <ListTable todos={todos} /> */}
-                 { visibleModal && <Modal hideModal={hideModalOnClick} item={selectedItem} >
-                    text
-                </Modal>}
+                 { visibleModal && <Modal hideModal={hideModalOnClick} item={selectedItem} editTodo={editTodoOnClick}/> }
                 { loader ? <Loader /> :  <ListTable2 todos={todos} 
                                                      removeItem={removeItem} 
                                                      addNewItem={addNewItem} 
