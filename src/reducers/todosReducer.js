@@ -15,7 +15,7 @@ const defaultState = {
 }
 
 export default function todosReducer(state = defaultState, action) {
-    debugger
+    // debugger
     switch (action.type) {
         case SET_TODOS: return {...state, todos: action.payload}
         case DELETE_TODO: return {...state, todos: [...state.todos.filter(todo => todo.id !== action.payload)]}

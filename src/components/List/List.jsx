@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Loader from '../UI/Loader/Loader';
 import Modal from '../UI/Modal/Modal';
 import { hideLoader, hideModal, setModal } from '../../reducers/appReducer';
+import Paginator from '../UI/Paginator/Paginator';
 
 const List = () => {
 
@@ -18,6 +19,7 @@ const List = () => {
     const loader = useSelector( state => state.app.loader )
     const visibleModal = useSelector( state => state.app.visibleModal )
     const selectedItem = useSelector ( state => state.todos.selectedItem )
+    const [currentPage, setCurrentPage] = useState(1);
 
     const store = useStore()
     console.log("from store:", store.getState())
@@ -58,6 +60,9 @@ const List = () => {
             setInputValue ('');
         }            
     }
+    const onPageChanged = (p) => {
+        setCurrentPage(p)
+    }
 
     return (
         <div className="table">
@@ -67,6 +72,13 @@ const List = () => {
                             onComplete={onComplete} /> */}               
                 <div>List</div>
                  {/* <ListTable todos={todos} /> */}
+                 <div className="paginator">
+                    {/* <center><Paginator pagesCount={pagesCount} currentPage={currentPage} onPageChanged={onPageChanged}/></center> */}
+                    <center><Paginator todos={todos} 
+                                       currentPage={currentPage} 
+                                       onPageChanged={onPageChanged} />
+                    </center>
+                </div> 
                  { visibleModal && <Modal hideModal={hideModalOnClick} item={selectedItem} editTodo={editTodoOnClick}/> }
                 { loader ? <Loader /> :  <ListTable2 todos={todos} 
                                                      removeItem={removeItem} 
