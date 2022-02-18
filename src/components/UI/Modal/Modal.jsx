@@ -23,8 +23,8 @@ const Modal = ({ hideModal, editTodo, item }) => {
                         <div className="descriptionBlock">      
                             <form>             
                                 <p><b>Task: </b>&nbsp;<input onChange={changeHandler} type="text" name="title" placeholder={item.title} /></p>
-                                <p><b>Completed </b><input onChange={changeHandler} type="radio" name="completed" value="true" /></p>
-                                <p><b>Uncompleted </b><input onChange={changeHandler} type="radio" name="completed" value="false" /></p>
+                                { item.completed ? <center><b>TASK COMPLETED</b></center> :
+                                <p><b>Completed </b><input onChange={changeHandler} type="radio" name="completed" value="true" /></p>}
                             </form>   
                             <div className="button_block">
                                 <button className="button" onClick={hideModal} > Cancel </button>

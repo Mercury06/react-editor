@@ -1,8 +1,6 @@
 import React from "react";
 import "./Navbar.scss"
 import {NavLink} from "react-router-dom";
-import {nav} from "react-bootstrap";
-import { LogoIcon } from "../UI/Icons/Boxicons";
 
 const Navbar = () => {
     return (

@@ -35,39 +35,36 @@ const ListTable2 = ({todos, removeItem, portionSize=10, addNewItem, inputValue, 
     return (
         <> 
             <section className="vh-100" >          
-  <div className="container py-5 h-100">
-    <div className="row d-flex justify-content-center align-items-center h-100">
-      <div className="col col-xl-10">
+                <div className="container py-5 h-100">
+                  <div className="row d-flex justify-content-center align-items-center h-100">
+                    <div className="col col-xl-10">
 
-        <div className="card mb-50}" >        
-          <div className="card-body p-4">
-            <h6 className="mb-4">Add somethig to list </h6> 
+                      <div className="card mb-50}" >        
+                        <div className="card-body p-4">
+                          <h6 className="mb-4">Add somethig to list </h6> 
+                          
+                          <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i className="fas fa-trash-alt fa-lg text-warning"></i></a>
+
+                          <form className="d-flex justify-content-center align-items-center mb-4">
+                            <div className="form-outline flex-fill">
+                              <input type="text" form="form1" value={inputValue} placeholder="Enter something..." className="form-control form-control-lg" 
+                                    onChange={(e) => setInputValue (e.target.value)}  />
+                            </div>
+                             <button type="button" className="btn btn-primary btn-lg ms-2" onClick={addNewItem} >Add</button>
+                       
             
-            <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i className="fas fa-trash-alt fa-lg text-warning"></i></a>
-
-            <form className="d-flex justify-content-center align-items-center mb-4">
-              <div className="form-outline flex-fill">
-                <input type="text" form="form1" value={inputValue} placeholder="Enter something..." className="form-control form-control-lg" 
-                       onChange={(e) => setInputValue (e.target.value)}  />
-                {/* <input type="text" form="form1"  placeholder="Enter something..." className="form-control form-control-lg" 
-                        /> */}
-                
-              </div>
-              <button type="button" className="btn btn-primary btn-lg ms-2" onClick={addNewItem} >Add</button>
-              {/* <button type="button" className="btn btn-primary btn-lg ms-2" >Add</button> */}
-            </form>
+                          </form>
 
 
             <div className = "paginator">
-        {portionNumber > 1 &&
-            <button onClick = { () => { setPortionNumber(portionNumber - 1)}} className="button">prev</button>}
-        {pages.filter ( p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
+             {portionNumber > 1 && <button onClick = { () => { setPortionNumber(portionNumber - 1)}} className="button">prev</button>}
+            
+              {pages.filter ( p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
               .map ( (p) => {
                 return <span className = { cn ({ selectedPage : currentPage === p }, "pageNumber")}                          
                              key = {p}
                              onClick = { () => {onPageChanged (p, paginatedTodos)}}> {p} </span>})}
-        {portionCount > portionNumber &&
-            <button onClick = { () => {setPortionNumber (portionNumber + 1)}} className="button">next</button>} </div>
+                    {portionCount > portionNumber && <button onClick = { () => {setPortionNumber (portionNumber + 1)}} className="button">next</button>} </div>
             
             { paginatedTodos && paginatedTodos.length > 0  
                 ? paginatedTodos.map((item) => {
@@ -85,19 +82,13 @@ const ListTable2 = ({todos, removeItem, portionSize=10, addNewItem, inputValue, 
                 })
                 : <div className="loader"> <h3>list is empty</h3></div>
             }
-            
-           
+                            </div>
+                          </div>
 
-              
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-        </>  )}
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+         </>  )}
 
 export default ListTable2;

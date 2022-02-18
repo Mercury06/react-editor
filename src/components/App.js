@@ -1,4 +1,3 @@
-
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.scss';
 import List from './List/List';
@@ -16,7 +15,7 @@ function App() {
             <Route path="/main" element={<MainPage />} />
             <Route path="/" element={<MainPage />} />
             <Route path="/list" element={<List />} replace />
-            <Route path="main/list" element={<Navigate to="/list" replace />} />      
+            <Route path="main/list" element={<Navigate to="/list" replace />} />     
 
           </Routes>           
               

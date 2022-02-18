@@ -35,7 +35,7 @@ const List = () => {
     }
 
     const editTodoOnClick = (obj) => {
-        debugger
+   
         dispatch(editTodo(obj))
         dispatch(hideModal());
     }
