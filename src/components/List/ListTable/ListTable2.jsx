@@ -39,9 +39,9 @@ const ListTable2 = ({todos, removeItem, portionSize=10, addNewItem, inputValue, 
     <div className="row d-flex justify-content-center align-items-center h-100">
       <div className="col col-xl-10">
 
-        <div className="card" >        
-          <div className="card-body p-5">
-            <h6 className="mb-3">Add somethig to list </h6> 
+        <div className="card mb-50}" >        
+          <div className="card-body p-4">
+            <h6 className="mb-4">Add somethig to list </h6> 
             
             <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i className="fas fa-trash-alt fa-lg text-warning"></i></a>
 

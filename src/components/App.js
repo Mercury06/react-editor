@@ -18,7 +18,7 @@ function App() {
             <Route path="/list" element={<List />} replace />
             <Route path="main/list" element={<Navigate to="/list" replace />} />      
 
-          </Routes> 
+          </Routes>           
               
           </div>
     </div>

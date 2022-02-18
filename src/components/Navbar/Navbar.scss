@@ -7,11 +7,14 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: space-between;
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         padding-right: 0.75rem;
         padding-left: 0.75rem;
+
+        .navbar_item {
+            margin-left: 66px;
+        }
 
         .navbar_item a {
             font-family: system-ui,-apple-system,"Segoe UI", "Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";

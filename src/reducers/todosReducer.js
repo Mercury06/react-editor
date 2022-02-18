@@ -2,7 +2,6 @@ import { todosAPI } from "../API/api"
 import { hideLoader, showLoader } from "./appReducer"
 
 const SET_TODOS = "SET_TODOS"
-//const SET_PAGINATED_TODOS = "SET_PAGINATED_TODOS"
 const ADD_TODO = "ADD_TODO"
 const DELETE_TODO = 'DELETE_TODO'
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
@@ -10,28 +9,26 @@ const SET_SELECTED_ITEM = "SET_SELECTED_ITEM"
 const EDIT_TODO = "EDIT_TODO"
 
 
-
 const defaultState = {
     todos: [],
-    //paginatedTodos: [],
     currentPage: 1,
     selectedItem: {}
     
 }
 
 export default function todosReducer(state = defaultState, action) {
-    //debugger
+   debugger
     switch (action.type) {
         case SET_TODOS: return {...state, todos: action.payload}
-       // case SET_PAGINATED_TODOS: return {...state, paginatedTodos: action.payload}
         case DELETE_TODO: return {...state, todos: [...state.todos.filter(todo => todo.id !== action.payload)]}
         case SET_CURRENT_PAGE: return {...state, currentPage: action.payload}
         case SET_SELECTED_ITEM: return {...state, selectedItem: action.payload}
         case ADD_TODO: return {...state, todos: [action.payload, ...state.todos ]}
         case EDIT_TODO: return {...state, todos: [...state.todos.map(todo => todo.id === action.payload.id  
-                                                                    ? { ...todo, 
-                                                                        title: action.payload.title
-                                                                             }
+                                                                    ?   { ...todo,   
+                                                                        title: action.payload.title !== "" ? action.payload.title : todo.title,
+                                                                        completed: action.payload.completed !== "" ? action.payload.completed : todo.completed
+                                                                        }
                                                                     : todo
                                                                     )
                                                             ]}    
@@ -41,7 +38,6 @@ export default function todosReducer(state = defaultState, action) {
 }
 
 export const setTodos = (todos) => ({type: SET_TODOS, payload: todos})
-//export const setPaginatedTodos = (paginatedTodos) => ({type: SET_PAGINATED_TODOS, payload: paginatedTodos})
 export const addNewTodo = (newTodo) => ({type: ADD_TODO, payload: newTodo})
 export const deleteTodo = (id) => ({type: DELETE_TODO, payload: id})
 export const setCurrentPage = (p) => ({type: SET_CURRENT_PAGE, payload: p })

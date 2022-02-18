@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addNewTodo, deleteTodo, editTodo, getTodosThunkCreator, setCurrentPage } from '../../reducers/todosReducer';
 import ListTable2 from './ListTable/ListTable2';
 import { v4 as uuidv4 } from 'uuid';
 import Loader from '../UI/Loader/Loader';
 import Modal from '../UI/Modal/Modal';
-import { hideLoader, hideModal, setModal } from '../../reducers/appReducer';
+import { hideModal} from '../../reducers/appReducer';
 
 
 const List = () => {
@@ -20,10 +20,7 @@ const List = () => {
     const selectedItem = useSelector ( state => state.todos.selectedItem )
     const dispatch = useDispatch();
 
-    const store = useStore()
-    console.log("from store:", store.getState())
     
-  
     useEffect (() => {    
         dispatch(getTodosThunkCreator());              
     }, []);
@@ -60,7 +57,7 @@ const List = () => {
     }
 
     const onPageChanged = (p) => {
-        debugger
+        
         dispatch(setCurrentPage(p))
     }
 
